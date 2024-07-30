@@ -1,8 +1,9 @@
+// import { useState } from 'react'
 import Board from './components/board'
 import './styles.scss'
 
 function App() {
-
+  
   return (
     <div className='app'>
       <Board />
