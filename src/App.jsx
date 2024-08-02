@@ -63,6 +63,7 @@ function App() {
   
   return (
     <div className='app'>
+     <p style={{color:"rgb(103, 101, 121)"}}>TIC TAC TOE</p>
       <StatusMessage winner={winner} gamingBoard={gamingBoard} />
       <Board squares={gamingBoard.squares} handleSquareClick={handleSquareClick} winningSquare={winningSquare}  />
       <div className='btns'>
