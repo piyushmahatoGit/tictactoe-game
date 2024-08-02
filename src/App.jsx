@@ -6,40 +6,67 @@ import checkWinner from "./winner"
 
 function App() {
 
-  const [squares, setSquare] = useState(Array(9).fill(null));
-  const [next, setNext] = useState(false);
+  const [history, setHistory] = useState([{squares: Array(9).fill(null), next: false}]); 
+  const [currMove, setCurrMove] = useState(0);
 
-  const winner = checkWinner(squares);
+  const gamingBoard = history[currMove];
+
+  const winner = checkWinner(gamingBoard.squares);
  
-
+  console.log({history, currMove});
   
   // const message = winner ? `Winner ${winner}` : `Next player ${nextPlayer}`;
 
   const handleSquareClick = (clickPosition) => {
 
-      if(squares[clickPosition] || winner){
+      if(gamingBoard.squares[clickPosition] || winner){
           return;
       }
 
-      setSquare((currSquares)=>{
-          return currSquares.map((squareValue, position) => {
+      setHistory((currHistory)=>{
+        const isTraversing = currMove + 1 !== currHistory.length;
+
+        const lastGamingState = isTraversing ? currHistory[currMove]: currHistory[currHistory.length - 1]
+
+          const nextSquaresState = lastGamingState.squares.map((squareValue, position) => {
               if(clickPosition === position) {
-                  return next ? 'X': 'O' ;
+                  return lastGamingState.next ? 'X': 'O' ;
               }
 
               return squareValue;
           })
+
+          const base = isTraversing 
+          ? currHistory.slice(0 , currHistory.indexOf(lastGamingState) + 1) 
+          : currHistory;
+
+          return base.concat({squares: nextSquaresState, next: !lastGamingState.next})
       })
 
-      setNext((currNextValue) => !currNextValue)
+      setCurrMove(move => move + 1)
   }
 
+  const goBack = () => {
+    if (currMove == 0){
+      return 0;
+    }else {
+    setCurrMove(currMove - 1);
+    }
+  }
+
+
+  
  
   
   return (
     <div className='app'>
-      <StatusMessage winner={winner} next={next} squares={squares} />
-      <Board squares={squares} handleSquareClick={handleSquareClick}/>
+      <StatusMessage winner={winner} gamingBoard={gamingBoard} />
+      <Board squares={gamingBoard.squares} handleSquareClick={handleSquareClick}/>
+      <div className='btns'>
+        <button type='button' onClick={goBack} className='btn-extra' ><img className='undo-img' src='undo.svg'></img></button>
+        <button type='button' onClick={() => location.reload()} className='btn-extra btn-restart' ><img className='restart-img' src='restart.svg'></img></button>
+      </div>
+      
     </div>
   )
 }
