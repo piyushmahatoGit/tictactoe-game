@@ -4,6 +4,8 @@ import './styles.scss'
 import StatusMessage from './components/StatusMessage'
 import checkWinner from "./winner"
 
+
+
 function App() {
 
   const [history, setHistory] = useState([{squares: Array(9).fill(null), next: false}]); 
@@ -11,9 +13,9 @@ function App() {
 
   const gamingBoard = history[currMove];
 
-  const winner = checkWinner(gamingBoard.squares);
+  const{ winner, winningSquare }= checkWinner(gamingBoard.squares);
  
-  console.log({history, currMove});
+  // console.log({history, currMove});
   
   // const message = winner ? `Winner ${winner}` : `Next player ${nextPlayer}`;
 
@@ -30,7 +32,8 @@ function App() {
 
           const nextSquaresState = lastGamingState.squares.map((squareValue, position) => {
               if(clickPosition === position) {
-                  return lastGamingState.next ? 'X': 'O' ;
+                  console.log(clickPosition)
+                  return lastGamingState.next ? 'X' : 'O' ;
               }
 
               return squareValue;
@@ -43,11 +46,11 @@ function App() {
           return base.concat({squares: nextSquaresState, next: !lastGamingState.next})
       })
 
-      setCurrMove(move => move + 1)
+      setCurrMove(currMove + 1)
   }
 
   const goBack = () => {
-    if (currMove == 0){
+    if (currMove === 0){
       return 0;
     }else {
     setCurrMove(currMove - 1);
@@ -61,7 +64,7 @@ function App() {
   return (
     <div className='app'>
       <StatusMessage winner={winner} gamingBoard={gamingBoard} />
-      <Board squares={gamingBoard.squares} handleSquareClick={handleSquareClick}/>
+      <Board squares={gamingBoard.squares} handleSquareClick={handleSquareClick} winningSquare={winningSquare}  />
       <div className='btns'>
         <button type='button' onClick={goBack} className='btn-extra' ><img className='undo-img' src='undo.svg'></img></button>
         <button type='button' onClick={() => location.reload()} className='btn-extra btn-restart' ><img className='restart-img' src='restart.svg'></img></button>

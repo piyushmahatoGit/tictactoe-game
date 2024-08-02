@@ -1,7 +1,7 @@
-$green: #12e177;
-$orange: #ffc72a;
+$green: #c3e7d4;
+$orange: #ddcac5;
 $blue: #353448;
-$gray: rgb(192, 192, 192);
+$gray: rgb(103, 101, 121);
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -69,7 +69,7 @@ button {
 }
 
 .status-message {
-  color: $gray;
+  color: #e5e4ec;
 	margin-bottom: 50px;
 	font-size: 2rem;
 	font-weight:bold;
@@ -141,7 +141,7 @@ button {
       border-bottom: none;
     }
     .square {
-      color: $gray;
+      // color: $gray;
       width: 80px;
       height: 80px;
       border-right: 2px solid #fff;
@@ -154,16 +154,16 @@ button {
         border-right: none;
       }
       &.winning {
-	    animation: scaleText 1.4s infinite;
+	    animation: scaleText 0.8s infinite;
 	    @keyframes scaleText {
 	      0% {
-	        transform: 2.5rem;
+	        font-size: 2.8rem;
 	      }
 	      50% {
 	        font-size: 3.5rem;
 	      }
 	      100% {
-	        font-size: 2.5rem;
+	        font-size: 2.8rem;
 	      }
 	    }
 	  }

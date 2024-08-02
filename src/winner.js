@@ -14,9 +14,15 @@ export default function checkWinner(squares){
         const [a, b, c] = line[i];
 
         if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return {
+                winner: squares[a],
+                winningSquare: line[i]
+            };
         }
     }
-    return null;
+    return {
+        winner : null,
+        winningSquare: []
+    }
 }
 
