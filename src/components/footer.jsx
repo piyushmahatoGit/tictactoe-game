@@ -3,7 +3,7 @@ const Footer = () => {
 return  <footer>
             <img src="pm.png" className="logo"></img>
             <div>_______</div>
-            <p className="copyright">© tictactoe {new Date().getFullYear()}</p>
+            <p className="copyright">Copyright ©  {new Date().getFullYear()} Piyush Mahato</p>
         </footer>
 }
 
