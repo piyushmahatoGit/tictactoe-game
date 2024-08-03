@@ -3,6 +3,7 @@ import Board from './components/board'
 import './styles.scss'
 import StatusMessage from './components/StatusMessage'
 import checkWinner from "./winner"
+import Footer from './components/footer'
 
 
 
@@ -70,7 +71,7 @@ function App() {
         <button type='button' onClick={goBack} className='btn-extra' ><img className='undo-img' src='undo.svg'></img></button>
         <button type='button' onClick={() => location.reload()} className='btn-extra btn-restart' ><img className='restart-img' src='restart.svg'></img></button>
       </div>
-      
+      <Footer />
     </div>
   )
 }

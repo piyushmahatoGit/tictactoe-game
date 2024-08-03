@@ -8,13 +8,13 @@ const StatusMessage = ({winner, gamingBoard}) => {
     
     const renderStatusMessage = () => {
         if(winner) {
-            return <>Winner is {winner}</>
+            return <span>Winner is {winner}</span>
         }
         if(!winner && noMovesLeft){
-            return <>Draw!</>
+            return <span className="draw">Draw!</span>
         }
         if(!winner && !noMovesLeft) {
-            return <>Next Player is {nextPlayer}</>
+            return <span>Next Player is {nextPlayer}</span>
         }
     }
     return  <h2 className="status-message">
