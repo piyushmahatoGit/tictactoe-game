@@ -72,6 +72,7 @@ function App() {
         <button type='button' onClick={() => location.reload()} className='btn-extra btn-restart' ><img className='restart-img' src='restart.svg'></img></button>
       </div>
       <Footer />
+      <div className='bg-balls'></div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-$green: #c3e7d4;
+$green: #7ccda2;
 $orange: #ddcac5;
 $blue: #353448;
 $gray: rgb(103, 101, 121);
@@ -108,7 +108,7 @@ button {
   margin-top: 50px;
   border: 3px solid rgb(255, 255, 255);
   opacity: 0.4;
-  background-color: #5ddc9a;
+  background-color: #4ccd8a;
 }
 .btn-restart{
   background-color: rgb(245, 215, 215);
@@ -190,10 +190,10 @@ button {
 
 .bg-balls {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
   min-width: 100%;
   z-index: -1;
 
